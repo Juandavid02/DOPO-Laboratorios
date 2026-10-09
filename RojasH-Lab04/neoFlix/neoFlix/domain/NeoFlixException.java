@@ -20,6 +20,15 @@ public class NeoFlixException extends Exception {
     /** Mensaje para cuando el contenido está vacío. */
     public static final String CONTENT_EMPTY = "El contenido esta vacio";
 
+    /** Mensaje para cuando el nombre ya existe. */
+    public static final String NAME_EXISTS = "El nombre ya existe";
+
+    /** Mensaje para cuando un valor no es numérico. */
+    public static final String NUMBER_FORMAT = "Los valores deben ser numericos";
+
+    /** Mensaje para cuando un episodio de la serie no existe. */
+    public static final String EPISODE_NOT_FOUND = "El episodio no existe";
+
     /**
      * Crea una excepción con el mensaje que le pasemos.
      *

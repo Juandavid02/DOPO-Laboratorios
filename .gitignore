@@ -1,3 +1,41 @@
+# ==========================================
+# Archivos de compilación de Java (Bytecode)
+# ==========================================
 *.class
+
+# ==========================================
+# Archivos temporales y de contexto de BlueJ
+# ==========================================
 *.ctxt
+*.bluej
+
+# ==========================================
+# Carpetas de documentación y binarios
+# ==========================================
 doc/
+bin/
+build/
+target/
+out/
+
+# ==========================================
+# Archivos de Entornos de Desarrollo (IDEs)
+# ==========================================
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+
+# Visual Studio Code
+.vscode/
+
+# Mac OS / Archivos del sistema
+.DS_Store
+Thumbs.db
