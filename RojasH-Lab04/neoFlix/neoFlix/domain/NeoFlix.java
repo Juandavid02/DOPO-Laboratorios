@@ -130,7 +130,7 @@ public class NeoFlix{
         ArrayList <Content> answers=new ArrayList<Content>();
         prefix=prefix.toUpperCase();
         for(int i=0;i<contents.size();i++){
-            if(contents.get(i).getTitle().toUpperCase().startsWith(prefix)){
+            if(contents.get(i+1).getTitle().toUpperCase().startsWith(prefix)){
                 answers.add(contents.get(i));
             }   
         }
@@ -157,7 +157,6 @@ public class NeoFlix{
         }    
         return answer.toString();
     }
-    
     
      /**
      * Return the data of episodes with a prefix
