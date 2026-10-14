@@ -235,10 +235,17 @@ public class NeoFlixGUI extends JFrame{
     private void actionSearch(){
         String patronBusqueda=textSearch.getText();
         String answer = "";
-        if(patronBusqueda.length() > 0) {
-            answer = neoFlix.search(patronBusqueda);
+        try {
+            if(patronBusqueda.length() > 0) {
+                answer = neoFlix.search(patronBusqueda);
+            }
+            textResults.setText(answer);
+        } catch (Exception e){
+            Log.record(e);
+            textResults.setText("");
+            JOptionPane.showMessageDialog(this, "Ocurrió un problema inesperado en la búsqueda.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        textResults.setText(answer);
+        
     } 
     
    public static void main(String args[]){
