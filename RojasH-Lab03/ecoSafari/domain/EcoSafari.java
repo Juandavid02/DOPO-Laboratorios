@@ -49,7 +49,7 @@ public class EcoSafari{
         SickElephant casco = new SickElephant(this, 6, 4);
         SaltLick cesarS = new SaltLick(this, 12, 11);
         SaltLick juanS = new SaltLick(this, 14, 13);
-    
+        Captus prueba = new Captus(this, 5,10);
         // Zona de tierra: filas 18 a 24 (las últimas 7 filas de la cuadrícula)
         int zonaTierraDesde = 18;
     
