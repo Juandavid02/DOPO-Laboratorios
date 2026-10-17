@@ -217,7 +217,11 @@ public class NeoFlixGUI extends JFrame{
 
     
     private void actionList(){
-        textDetails.setText(neoFlix.toString());
+        try {
+            textDetails.setText(neoFlix.toString());
+        } catch (Exception e){
+            handleUnexpected(e, "la lista");
+        }
     }
     
     private void  actionAdd(){
@@ -229,6 +233,8 @@ public class NeoFlixGUI extends JFrame{
             }
         } catch (NeoFlixException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); //Ia generativa
+        }  catch (Exception e) {
+            handleUnexpected(e, "la adición");
         }
     }
 
@@ -241,15 +247,26 @@ public class NeoFlixGUI extends JFrame{
             }
             textResults.setText(answer);
         } catch (Exception e){
-            Log.record(e);
-            textResults.setText("");
-            JOptionPane.showMessageDialog(this, "Ocurrió un problema inesperado en la búsqueda.", "Error", JOptionPane.ERROR_MESSAGE);
+            handleUnexpected(e,"la Busqueda" );
         }
         
     } 
     
+    /**
+     * Maneja un error que no esperabamos: lo guarda en el log
+     * y le avisa al usuario sin mostrarle detalles tecnicos.
+     */
+    private void handleUnexpected(Exception e, String action) { //Nombre del medoto por documentacion dado por Claude
+        Log.record(e);
+        JOptionPane.showMessageDialog(this, "Ocurrió un problema inesperado en " + action + ".", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+ 
    public static void main(String args[]){
        NeoFlixGUI gui=new NeoFlixGUI();
+       Thread.setDefaultUncaughtExceptionHandler((hilo, error) -> {
+           gui.handleUnexpected(new Exception(error), "la aplicación");
+        });
+
        gui.setVisible(true);
    }    
 }
