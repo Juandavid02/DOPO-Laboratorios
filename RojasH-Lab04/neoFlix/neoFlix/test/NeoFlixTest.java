@@ -1,7 +1,5 @@
 package test;
 
-
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -179,6 +177,58 @@ public class NeoFlixTest
         }
         assertEquals(6, n.numberContents());
         assertNull(n.consult("The Ninja Returns"));
+    }
+    
+    // Pruebas de Search() y Select()
+        
+    // select
+    @Test
+    public void shouldSelectSixContentsWhenPrefixIsT(){
+        assertEquals(6, n.select("T").size());
+    }
+    
+    @Test
+    public void shouldSelectOnlyTheSeriesWhenPrefixIsTheN(){
+        assertEquals(1, n.select("The N").size());
+    }
+    
+    @Test
+    public void shouldSelectNothingWhenPrefixDoesNotExist(){
+        assertEquals(0, n.select("Z").size());
+    }
+    
+    @Test
+    public void shouldIgnoreCaseWhenSelecting(){
+        assertEquals(6, n.select("the").size());
+    }
+    
+    @Test
+    public void shouldSelectAnAddedEpisodeByItsPrefix() throws NeoFlixException{
+        n.addEpisode("Zeta", "?", "100", "60", "50", "354");
+        assertEquals(1, n.select("Z").size());
+    }
+    
+    // search
+    @Test
+    public void shouldSearchSixElementsWhenPrefixIsT(){
+        assertTrue(n.search("T").startsWith("6 elementos"));
+    }
+    
+    @Test
+    public void shouldSearchZeroElementsWhenPrefixDoesNotExist(){
+        assertTrue(n.search("Z").startsWith("0 elementos"));
+    }
+    
+    @Test
+    public void shouldSearchTheSeriesWithItsYearAndIndicators(){
+        String result = n.search("The N");
+        assertTrue(result.startsWith("1 elementos"));
+        assertTrue(result.contains(">The Neo Ninja: 2020 ( 81 - 8 )"));
+    }
+    
+    @Test
+    public void shouldSearchAnEpisodeWithItsIndicators(){
+        assertTrue(n.search("The Rival").contains(">The Rival ( 60 - 8 )"));
     }
     
     /**

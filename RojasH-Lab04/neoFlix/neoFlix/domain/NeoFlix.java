@@ -76,9 +76,11 @@ public class NeoFlix{
     * @param sumVotes
     */
     public void addEpisode(String title, String series, String attempts, String completed, String votes, String sumVotes) throws NeoFlixException{
+        if (title == null || title.trim().isEmpty())
+            throw new NeoFlixException(NeoFlixException.NAME_NOTEXISTS);
         if (consult(title) != null) throw new NeoFlixException(NeoFlixException.NAME_EXISTS);
         int nAttempts, nCompleted, nVotes, nSumVotes;
-        try {
+            try {
             nAttempts = Integer.parseInt(attempts);
             nCompleted = Integer.parseInt(completed);
             nVotes = Integer.parseInt(votes);
@@ -157,7 +159,6 @@ public class NeoFlix{
         }    
         return answer.toString();
     }
-    
     
      /**
      * Return the data of episodes with a prefix

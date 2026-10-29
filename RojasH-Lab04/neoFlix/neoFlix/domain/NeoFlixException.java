@@ -28,7 +28,8 @@ public class NeoFlixException extends Exception {
 
     /** Mensaje para cuando un episodio de la serie no existe. */
     public static final String EPISODE_NOT_FOUND = "El episodio no existe";
-
+    
+    public static final String NAME_NOTEXISTS = "Nombre ya existe";
     /**
      * Crea una excepción con el mensaje que le pasemos.
      *
