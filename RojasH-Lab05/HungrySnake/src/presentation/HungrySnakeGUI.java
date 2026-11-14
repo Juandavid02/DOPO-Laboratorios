@@ -22,6 +22,7 @@ public class HungrySnakeGUI extends JFrame {
     private JMenuItem itemAbrir; 
     private JMenuItem itemSalir;
     private JMenuItem itemSalvar;
+    private JMenuItem itemOcultar;
     private JMenuItem itemColorSerpiente;
     private JMenuItem itemColorFrutas;
     private JMenuItem itemColorObstaculos;
@@ -94,6 +95,7 @@ public class HungrySnakeGUI extends JFrame {
         JMenuBar barraMenu = new JMenuBar();
         JMenu menuArchivo = new JMenu("Archivo");
         JMenu menuOpciones = new JMenu("Opciones");
+        itemOcultar = new JMenuItem("Ocultar");
         itemNuevo = new JMenuItem("Nuevo");
         itemAbrir = new JMenuItem("Abrir");
         itemSalvar = new JMenuItem("Salvar");
@@ -102,7 +104,7 @@ public class HungrySnakeGUI extends JFrame {
         itemColorFrutas = new JMenuItem("Color de las frutas");
         itemColorObstaculos = new JMenuItem("Color de los Obstaculos");
         itemConfiguracion = new JMenuItem("Configuracion...");
-
+        menuArchivo.add(itemOcultar);
         menuArchivo.add(itemNuevo);
         menuArchivo.addSeparator();
         menuArchivo.add(itemAbrir);
@@ -504,5 +506,17 @@ public class HungrySnakeGUI extends JFrame {
             File archivo = selector.getSelectedFile();
             JOptionPane.showMessageDialog(this, "Salvar esta en construccion. Archivo: " + archivo.getName());
         }
+    }
+
+    public void alternarTablero(){
+        boolean visible = !panelGrid.isVisible();
+        panelGrid.setVisible(visible);
+        if (visible){
+            itemOcultar.setText("Oculando");
+        } 
+        else{
+            itemOcultar.setText("Mostrando");
+        }
+        requestFocusInWindow();
     }
 }

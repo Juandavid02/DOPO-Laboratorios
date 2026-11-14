@@ -21,6 +21,7 @@ public class HungrySnake {
     private boolean[][] frutas;
     private boolean[][] obstaculos;
     private boolean juegoTerminado;
+    private boolean visible;
     
 
     private Random random;
