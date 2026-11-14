@@ -1,0 +1,7 @@
+Elephant 3, 3
+SickElephant 4, 4
+Lion 6, 6
+Hippo 8, 8
+Animal 10, 10
+Organism 12, 12
+EcoSafariException 14, 14

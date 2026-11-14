@@ -1,0 +1,3 @@
+Elephant 10, 20
+Bush 15, 15
+Storm 5, 5

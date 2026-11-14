@@ -1,0 +1,6 @@
+Elephant 5, 5
+Dragon 7, 7
+Bush 10, x
+Storm 40, 3
+Zebra 12
+Lion 14, 14
